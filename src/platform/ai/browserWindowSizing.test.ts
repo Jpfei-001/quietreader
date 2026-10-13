@@ -1,0 +1,12 @@
+import { describe, expect, it, vi } from 'vitest';
+import { BrowserWindowSizing } from './browserWindowSizing';
+function fixture(gain = 0, width = 440) { const child = { outerWidth: width, outerHeight: 720, devicePixelRatio: gain ? 1.75 : 1, resizeTo: vi.fn((w: number, h: number) => { child.outerWidth = w + gain; child.outerHeight = h + gain; }) }; return child; }
+describe('首次固定宽高与移动尺寸反馈保护', () => {
+  it('首次锁定宽高，主窗后来改变高度也不改变锁定目标', () => { const child = fixture(), sizing = new BrowserWindowSizing(); sizing.restore(child, 920, false, false); sizing.restore(child, 1100, false, false); expect(sizing.target).toEqual({ width: 440, height: 920 }); expect(child.resizeTo).toHaveBeenCalledTimes(1); });
+  it('175% DPI 移动使尺寸增长时，每次只恢复最初固定值，不累计放大', () => { const child = fixture(1), sizing = new BrowserWindowSizing(); sizing.restore(child, 920, false, true); for (let i = 0; i < 100; i++) { child.outerWidth++; child.outerHeight++; sizing.restore(child, 920 + i, true, true); } expect(child.outerWidth).toBe(440); expect(child.outerHeight).toBe(920); expect(child.resizeTo.mock.calls.every(([w,h]) => w === 439 && h === 919)).toBe(true); });
+  it('未知尺寸返回偏差不在静止状态反复重试同一目标', () => { const child = fixture(40), sizing = new BrowserWindowSizing(); sizing.restore(child, 920, false, false); for (let i = 0; i < 100; i++) expect(sizing.restore(child, 920, false, false)).toBe(false); expect(child.resizeTo).toHaveBeenCalledTimes(1); expect(sizing.target?.width).toBe(440); });
+  it('非 Windows 环境不应用分数 DPI 的特殊补偿', () => { const child = fixture(), sizing = new BrowserWindowSizing(); child.devicePixelRatio = 1.75; sizing.restore(child, 920, false, false); expect(child.resizeTo).toHaveBeenCalledWith(440,920); });
+  it('新窗口重置后重新记录首次尺寸', () => { const sizing = new BrowserWindowSizing(); sizing.restore(fixture(),920,false,false); sizing.reset(); sizing.restore(fixture(0,500),800,false,false); expect(sizing.target).toEqual({width:500,height:800}); });
+  it('旧窗口异常超宽时使用有限初始目标，不锁定放大后的屏幕宽度', () => { const sizing = new BrowserWindowSizing(); sizing.restore(fixture(0,1800),920,false,false); expect(sizing.target?.width).toBe(440); });
+  it('无效输入不提交；API 抛错不无限重试', () => { const child = fixture(), sizing = new BrowserWindowSizing(); expect(sizing.restore(child,Infinity,false,false)).toBe(false); child.resizeTo.mockImplementation(()=>{throw new Error('Denied');}); expect(()=>sizing.restore(child,920,false,false)).toThrow(); expect(sizing.restore(child,920,false,false)).toBe(false); expect(child.resizeTo).toHaveBeenCalledTimes(1); });
+});
