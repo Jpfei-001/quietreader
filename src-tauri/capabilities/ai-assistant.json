@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "ai-assistant",
+  "description": "独立助手仅使用同应用事件通道及自己的标题栏窗口操作（拖动、最小化、最大化、背景颜色、关闭），不授予文件系统、Shell、网络插件或密钥读取权限；后端 AI 命令另校验调用窗口。",
+  "windows": ["ai-assistant"],
+  "permissions": ["core:default", "core:window:allow-close", "core:window:allow-minimize", "core:window:allow-toggle-maximize", "core:window:allow-start-dragging", "core:window:allow-set-background-color", "core:webview:allow-set-webview-background-color"]
+}

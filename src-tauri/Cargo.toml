@@ -1,0 +1,24 @@
+[package]
+name = "quiet-reader"
+version = "0.3.7"
+description = "An offline-first minimal EPUB reader"
+authors = ["Quiet Reader"]
+edition = "2021"
+
+[lib]
+name = "quiet_reader_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+reqwest = { version = "0.13.5", default-features = false, features = ["json", "stream", "native-tls", "system-proxy"] }
+futures-util = "0.3"
+tokio = { version = "1", features = ["macros", "sync", "time"] }
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.61", features = ["Win32_Security_Credentials", "Win32_Foundation", "Win32_UI_Shell", "Win32_System_Com"] }
