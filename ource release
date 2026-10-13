@@ -1,0 +1,168 @@
+ .gitignore                                         |   62 [32m+[m
+ ...270\212\344\274\240\350\257\264\346\230\216.md" |   58 [32m+[m
+ README.md                                          |   77 [32m+[m
+ .../README.md"                                     |   45 [32m+[m
+ .../images/00-cover.png"                           |  Bin [31m0[m -> [32m54775[m bytes
+ .../images/01-bookshelf.png"                       |  Bin [31m0[m -> [32m56006[m bytes
+ .../images/02-reading.png"                         |  Bin [31m0[m -> [32m233303[m bytes
+ .../images/03-contents.png"                        |  Bin [31m0[m -> [32m13692[m bytes
+ .../images/04-settings.png"                        |  Bin [31m0[m -> [32m239061[m bytes
+ .../images/05-focus.png"                           |  Bin [31m0[m -> [32m131977[m bytes
+ .../images/06-selection.png"                       |  Bin [31m0[m -> [32m4488[m bytes
+ .../images/07-thought.png"                         |  Bin [31m0[m -> [32m20389[m bytes
+ .../images/08-notebook.png"                        |  Bin [31m0[m -> [32m79535[m bytes
+ .../images/09-adjust.png"                          |  Bin [31m0[m -> [32m24786[m bytes
+ .../images/10-export.png"                          |  Bin [31m0[m -> [32m25279[m bytes
+ .../images/11-restore.png"                         |  Bin [31m0[m -> [32m30698[m bytes
+ .../images/12-delete.png"                          |  Bin [31m0[m -> [32m24791[m bytes
+ .../images/13-ai-settings.png"                     |  Bin [31m0[m -> [32m59944[m bytes
+ .../images/14-ai-question.png"                     |  Bin [31m0[m -> [32m56340[m bytes
+ .../images/15-ai-save-thought.png"                 |  Bin [31m0[m -> [32m41412[m bytes
+ ...223\215\344\275\234\346\214\207\345\215\227.md" |  425 [32m++[m
+ index.html                                         |   14 [32m+[m
+ package-lock.json                                  | 1887 [32m++++++++[m
+ package.json                                       |   51 [32m+[m
+ playwright.config.ts                               |   25 [32m+[m
+ playwright.preview.config.ts                       |   13 [32m+[m
+ public/demo/README.md                              |    9 [32m+[m
+ scripts/Build-Windows.ps1                          |  133 [32m+[m
+ scripts/capture-user-guide.mjs                     |  170 [32m+[m
+ scripts/check-release-version.mjs                  |   43 [32m+[m
+ scripts/check-release-version.test.mjs             |   89 [32m+[m
+ scripts/create-demo.mjs                            |   78 [32m+[m
+ scripts/create-user-guide.mjs                      |  103 [32m+[m
+ scripts/desktop-resources.mjs                      |   89 [32m+[m
+ scripts/desktop-resources.test.mjs                 |   73 [32m+[m
+ scripts/storageDiagnosticCollector.ts              |   93 [32m+[m
+ src-tauri/Cargo.lock                               | 4568 [32m++++++++++++++++++++[m
+ src-tauri/Cargo.toml                               |   24 [32m+[m
+ src-tauri/build.rs                                 |    3 [32m+[m
+ src-tauri/capabilities/ai-assistant.json           |    7 [32m+[m
+ src-tauri/capabilities/main.json                   |   16 [32m+[m
+ src-tauri/icons/128x128.png                        |  Bin [31m0[m -> [32m10569[m bytes
+ src-tauri/icons/128x128@2x.png                     |  Bin [31m0[m -> [32m20604[m bytes
+ src-tauri/icons/32x32.png                          |  Bin [31m0[m -> [32m2027[m bytes
+ src-tauri/icons/icon.ico                           |  Bin [31m0[m -> [32m34927[m bytes
+ src-tauri/icons/icon.png                           |  Bin [31m0[m -> [32m20338[m bytes
+ src-tauri/src/ai.rs                                |  183 [32m+[m
+ src-tauri/src/ai_links.rs                          |   45 [32m+[m
+ src-tauri/src/ai_window.rs                         |  113 [32m+[m
+ src-tauri/src/lib.rs                               |   58 [32m+[m
+ src-tauri/src/main.rs                              |    5 [32m+[m
+ src-tauri/src/window_layout.rs                     |  107 [32m+[m
+ src-tauri/tauri.conf.json                          |   44 [32m+[m
+ src/App.tsx                                        |  476 [32m++[m
+ src/ai.css                                         |   20 [32m+[m
+ src/assets/brand-pine-seal.png                     |  Bin [31m0[m -> [32m20250[m bytes
+ src/components/AiDetachedPage.tsx                  |   39 [32m+[m
+ src/components/AiFeature.tsx                       |   49 [32m+[m
+ src/components/AiFloatingWindow.tsx                |   29 [32m+[m
+ src/components/AiQuestionContent.tsx               |   56 [32m+[m
+ src/components/AiSettings.tsx                      |   28 [32m+[m
+ src/components/AnnotationTags.tsx                  |   11 [32m+[m
+ src/components/BookCard.tsx                        |   50 [32m+[m
+ src/components/ContentsPanel.tsx                   |   41 [32m+[m
+ src/components/DesktopTitleBar.tsx                 |   56 [32m+[m
+ src/components/DraftRecoveryDialog.tsx             |   45 [32m+[m
+ src/components/ExcerptAdjustEditor.tsx             |   41 [32m+[m
+ src/components/ImportCard.tsx                      |   46 [32m+[m
+ src/components/NoteTransferDialogs.tsx             |   47 [32m+[m
+ src/components/NotebookPage.tsx                    |   90 [32m+[m
+ src/components/NotesExperience.tsx                 |  391 [32m++[m
+ src/components/SearchHighlight.tsx                 |   14 [32m+[m
+ src/components/SelectionToolbar.tsx                |   11 [32m+[m
+ src/components/ThoughtPopoverEditor.tsx            |  103 [32m+[m
+ src/components/notePrimitives.tsx                  |   48 [32m+[m
+ src/components/useAiComposer.ts                    |   38 [32m+[m
+ src/main.tsx                                       |   11 [32m+[m
+ src/platform/ai/ai.test.ts                         |   77 [32m+[m
+ src/platform/ai/bridge.ts                          |   13 [32m+[m
+ src/platform/ai/browserCredential.test.ts          |   16 [32m+[m
+ src/platform/ai/browserCredential.ts               |   76 [32m+[m
+ src/platform/ai/browserWindowFollow.test.ts        |   28 [32m+[m
+ src/platform/ai/browserWindowFollow.ts             |   13 [32m+[m
+ src/platform/ai/browserWindowLayout.test.ts        |   28 [32m+[m
+ src/platform/ai/browserWindowLayout.ts             |   20 [32m+[m
+ src/platform/ai/browserWindowSizing.test.ts        |   12 [32m+[m
+ src/platform/ai/browserWindowSizing.ts             |   26 [32m+[m
+ src/platform/ai/deepseek.ts                        |   98 [32m+[m
+ src/platform/ai/references.ts                      |   16 [32m+[m
+ src/platform/ai/sessionStore.ts                    |  117 [32m+[m
+ src/platform/ai/settings.ts                        |    9 [32m+[m
+ src/platform/ai/types.ts                           |   22 [32m+[m
+ src/platform/ai/windowCoordinator.ts               |  261 [32m++[m
+ src/platform/annotationCompletion.test.ts          |   47 [32m+[m
+ src/platform/annotationGroups.test.ts              |   70 [32m+[m
+ src/platform/annotationGroups.ts                   |   70 [32m+[m
+ src/platform/annotationTypes.ts                    |   40 [32m+[m
+ src/platform/annotations.test.ts                   |  213 [32m+[m
+ src/platform/annotations.ts                        |  199 [32m+[m
+ src/platform/desktop.test.ts                       |   41 [32m+[m
+ src/platform/desktop.ts                            |   23 [32m+[m
+ src/platform/excerptReselection.test.ts            |   65 [32m+[m
+ src/platform/files.test.ts                         |   55 [32m+[m
+ src/platform/files.ts                              |   66 [32m+[m
+ src/platform/library.test.ts                       |  132 [32m+[m
+ src/platform/library.ts                            |  150 [32m+[m
+ src/platform/noteSearch.test.ts                    |   48 [32m+[m
+ src/platform/noteSearch.ts                         |   72 [32m+[m
+ src/platform/noteTransfer.ts                       |  229 [32m+[m
+ src/platform/preferences.test.ts                   |   45 [32m+[m
+ src/platform/preferences.ts                        |   33 [32m+[m
+ src/platform/storage.test.ts                       |   35 [32m+[m
+ src/platform/storage.ts                            |   41 [32m+[m
+ src/platform/storageDiagnosticCollector.test.ts    |   19 [32m+[m
+ src/platform/storageDiagnostics.test.ts            |   41 [32m+[m
+ src/platform/storageDiagnostics.ts                 |   68 [32m+[m
+ src/platform/userGuide.test.ts                     |   67 [32m+[m
+ src/reader/engine.test.ts                          |  108 [32m+[m
+ src/reader/engine.ts                               |  306 [32m++[m
+ src/reader/metadata.ts                             |   47 [32m+[m
+ src/reader/security.ts                             |   27 [32m+[m
+ src/reader/selection.ts                            |  134 [32m+[m
+ src/reader/themes.test.ts                          |   18 [32m+[m
+ src/reader/themes.ts                               |   32 [32m+[m
+ src/styles.css                                     |  420 [32m++[m
+ tests/ai-browser-window.spec.ts                    |   80 [32m+[m
+ tests/ai-composer.spec.ts                          |   15 [32m+[m
+ tests/ai-credential.spec.ts                        |   22 [32m+[m
+ tests/ai-ime.spec.ts                               |   43 [32m+[m
+ tests/ai-key-link.spec.ts                          |   20 [32m+[m
+ tests/ai-lifecycle.spec.ts                         |   45 [32m+[m
+ tests/ai-native-titlebar.spec.ts                   |   42 [32m+[m
+ tests/ai-native-window.spec.ts                     |  143 [32m+[m
+ tests/ai.spec.ts                                   |   70 [32m+[m
+ tests/annotation-completion.spec.ts                |   98 [32m+[m
+ tests/annotation-navigation.spec.ts                |   86 [32m+[m
+ tests/annotations.spec.ts                          |  516 [32m+++[m
+ tests/brand-icon.spec.ts                           |   52 [32m+[m
+ tests/desktop-package.spec.ts                      |   38 [32m+[m
+ tests/desktop-window-ui.spec.ts                    |  168 [32m+[m
+ tests/diagnostics.spec.ts                          |   73 [32m+[m
+ tests/helpers.ts                                   |   68 [32m+[m
+ tests/import-card.spec.ts                          |   52 [32m+[m
+ tests/layout-refinement.spec.ts                    |   79 [32m+[m
+ tests/library-layout.spec.ts                       |   66 [32m+[m
+ tests/library.spec.ts                              |  131 [32m+[m
+ tests/narrow-focus-layout.spec.ts                  |  117 [32m+[m
+ tests/note-dialog-layout.spec.ts                   |  208 [32m+[m
+ tests/notebook-management.spec.ts                  |  148 [32m+[m
+ tests/notebook-page.spec.ts                        |  159 [32m+[m
+ tests/notes-redesign.spec.ts                       |  146 [32m+[m
+ tests/pinned-book-switch.spec.ts                   |   20 [32m+[m
+ tests/pinned-contents.spec.ts                      |  201 [32m+[m
+ tests/reader-adjustments.spec.ts                   |  121 [32m+[m
+ tests/reader-focus.spec.ts                         |   98 [32m+[m
+ tests/reader-interaction-search.spec.ts            |  236 [32m+[m
+ tests/reader-notebook-scope.spec.ts                |   76 [32m+[m
+ tests/reader-preferences.spec.ts                   |  254 [32m++[m
+ tests/reader-spacing.spec.ts                       |   51 [32m+[m
+ tests/reader.spec.ts                               |  160 [32m+[m
+ tests/thought-editor.spec.ts                       |  202 [32m+[m
+ tests/user-guide.spec.ts                           |  148 [32m+[m
+ tsconfig.json                                      |   20 [32m+[m
+ vite.config.ts                                     |   24 [32m+[m
+ ...226\207\344\273\266\346\270\205\345\215\225.md" |  213 [32m+[m
+ ...20\257\345\212\250\351\235\231\350\257\273.cmd" |   43 [32m+[m
+ "\346\211\223\345\214\205Windows.cmd"              |   14 [32m+[m
+ 167 files changed, 18809 insertions(+)
